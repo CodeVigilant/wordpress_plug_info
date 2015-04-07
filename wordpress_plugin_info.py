@@ -78,7 +78,7 @@ def get_details(plug_name):
 		return '"' + plug_name + '","Not published"'	
 
 def main(argv):
-	desc="""Program to obtain information about a plugin"""
+	desc="""Program to obtain information about Wordpress plugin"""
 	epilog="""Credit (C) Anant Shrivastava http://anantshri.info"""
 	parser = argparse.ArgumentParser(description=desc,epilog=epilog)
 	parser.add_argument("--name",help="Provide Plugin name",dest='target',required=True)
