@@ -17,7 +17,10 @@ def get_details(plug_name):
 		soup = BeautifulSoup(r1.content,'html.parser')
 		reason=soup.find(class_='plugin-notice')
 		#return reason.text
-		response = plug_name + ";404;'" + reason.text + "'"
+		if reason:
+			response = plug_name + ";404;'" + reason.text + "'"
+		else:
+			response = plug_name + ";600;Non Existing Plugin"
 	else:
 		if r.status_code == 200:
 			plug_info = json.loads(r.content)
