@@ -5,14 +5,15 @@ import sys
 import argparse
 import datetime
 import json
-url_to_use="http://www.wordpress.org/plugins/"
-api_url="http://api.wordpress.org/plugins/info/1.0/"
+url_to_use="https://wordpress.org/plugins/"
+api_url="https://api.wordpress.org/plugins/info/1.0/"
 
 
 def get_details(plug_name):
 	r=requests.get(api_url + plug_name + ".json")
 	if r.status_code == 404:
-		r1=requests.get(url_to_use + plug_name + "/")
+		url_to_check=url_to_use + plug_name + "/"
+		r1=requests.get(url_to_check)
 		soup = BeautifulSoup(r1.content,'html.parser')
 		reason=soup.find(class_='plugin-notice')
 		#return reason.text
